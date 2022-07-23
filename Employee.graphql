@@ -1,0 +1,74 @@
+query Query {
+    allEmployees(department_DeptName_Icontains: "F", joinYear: 2020) {
+        pageInfo {
+            hasNextPage
+            hasPreviousPage
+            startCursor
+            endCursor
+        }
+        edges {
+            cursor
+            node {
+                id
+                name
+                joinYear
+                department {
+                    deptName
+                }
+            }
+        }
+    }
+
+    employee(id: "RW1wbG95ZWVOb2RlOjE=") {
+        id
+        name
+        joinYear
+        department {
+            id
+            deptName
+        }
+    }
+}
+
+mutation Mutation {
+    # createEmployee(input: {name: "dummy", joinYear: 2018, department: "RGVwYXJ0bWVudE5vZGU6Mw=="}) {
+    #   employee {
+    #     id
+    #     name
+    #     joinYear
+    #     department {
+    #       deptName
+    #       employees {
+    #         edges {
+    #           cursor
+    #           node {
+    #             name
+    #           }
+    #         }
+    #       }
+    #     }
+    #   }
+    # }
+
+    # updateEmployee(input: {id: "RW1wbG95ZWVOb2RlOjQ=", name: "dummys", joinYear: 2021, department: "RGVwYXJ0bWVudE5vZGU6Mw=="}) {
+    #   employee {
+    #     id
+    #     name
+    #     joinYear
+    #     department {
+    #       deptName
+    #     }
+    #   }
+    # }
+
+    deleteEmployee(input: {id: "RW1wbG95ZWVOb2RlOjQ="}) {
+        employee {
+            id
+            name
+            joinYear
+            department {
+                deptName
+            }
+        }
+    }
+}

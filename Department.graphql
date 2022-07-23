@@ -1,0 +1,73 @@
+#mutation {
+#    #    createUser(input: {username: "testUser", password: "testPassword", email: "test@example.com"}) {
+#    #        user {
+#    #            id
+#    #            username
+#    #            email
+#    #        }
+#    #    }
+#
+#    tokenAuth(username: "testUser", password: "testPassword") {
+#        token
+#    }
+#}
+
+# Query: operation name
+query Query {
+    #  allUsers {
+    #    edges {
+    #      cursor
+    #      node {
+    #        id
+    #        username
+    #        password
+    #        email
+    #        isSuperuser
+    #        isActive
+    #      }
+    #    }
+    #  }
+
+    allDepartments {
+        edges {
+            cursor
+            node {
+                id
+                deptName
+                employees {
+                    edges {
+                        node {
+                            name
+                        }
+                        cursor
+                    }
+                }
+            }
+        }
+    }
+}
+
+# Mutation: operation name
+mutation Mutation {
+    # createDept(input: {deptName: "dummy"}) {
+    #   department {
+    #     id
+    #     deptName
+    #     # 逆参照
+    #     employees {
+    #       edges {
+    #         cursor
+    #         node {
+    #           name
+    #         }
+    #       }
+    #     }
+    #   }
+    # }
+
+    deleteDept(input: {id: "RGVwYXJ0bWVudE5vZGU6NA=="}) {
+        department {
+            deptName
+        }
+    }
+}
